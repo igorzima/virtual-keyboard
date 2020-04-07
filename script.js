@@ -38,13 +38,15 @@ let keyboard = {
 
 
 let {keyArrEn, keyArrEnShift, keyArrRu, keyArrRuShift, arrCode} = keyboard;
-let textarea = document.createElement('textarea')
-let div = document.createElement('div')
-textarea.classList.add('area')
-div.classList.add('keyboard')
-document.querySelector('body').innerHTML = '<main></main>'
-document.querySelector('main').append(textarea)
-document.querySelector('main').append(div)
+let textarea = document.createElement('textarea');
+let div = document.createElement('div');
+let divArea = document.createElement('div');
+divArea.classList.add('wrapper');
+textarea.classList.add('area');
+div.classList.add('keyboard');
+document.querySelector('body').innerHTML = '<main></main>';
+document.querySelector('main').append(divArea, div);
+document.querySelector('div').append(textarea);
 
 
 
@@ -108,7 +110,9 @@ document.addEventListener('keydown', (event) => {
       backspace();
       break
     case 'Tab':
+      event.preventDefault();
       document.querySelector('.Tab').classList.add('active');
+      textarea.value += '    ';
       break
     case 'Delete':
       document.querySelector('.Delete').classList.add('active');
@@ -120,7 +124,8 @@ document.addEventListener('keydown', (event) => {
       document.querySelector('.Backslash').classList.add('active');
       break
     case 'CapsLock':
-      initEnShift();
+      document.querySelector('.CapsLock').classList.add('active');
+      shift(init(), initEnShift());
       break
     case 'ShiftLeft':
       document.querySelector('.ShiftLeft').classList.add('active');
@@ -138,7 +143,12 @@ document.addEventListener('keydown', (event) => {
     case 'MetaLeft':
       document.querySelector('.MetaLeft').classList.add('active');
       break
+    case 'AltLeft':
+      event.preventDefault();
+      document.querySelector('.AltLeft').classList.add('active');
+      break 
     case 'AltRight':
+      event.preventDefault();
       document.querySelector('.AltRight').classList.add('active');
       break
     case 'ArrowUp':
@@ -153,20 +163,33 @@ document.addEventListener('keydown', (event) => {
     case 'ArrowRight':
       document.querySelector('.ArrowRight').classList.add('active');
       break
+    case 'Enter':
+      enter()
+      break
+    case 'Backslash':
+      document.querySelector(`.${event.code}`).classList.add('active');
+      textarea.value += '\a';
     default:
-      document.querySelector('.keyboard .key[data="' + event.key + '"]').classList.add('active');
+      document.querySelector(`.${event.code}`).classList.add('active');
       textarea.value += event.key;
   }
 })
 
 document.onkeyup = function(event) {
   document.querySelectorAll('.keyboard .key').forEach(el => {
-    if(event.code === 'CapsLock' && initEnShift) {
+    el.classList.remove('active');
+    if(event.code === 'ShiftLeft' && !initEnShift()) {
       init()
     }
-    el.classList.remove('active');
-    init();
   })
+}
+
+function shift(func, func2) {
+  if(func) {
+    return initEnShift()
+  } else if(func2) {
+    return init();
+  }
 }
 
 function backspace () {
@@ -174,10 +197,6 @@ function backspace () {
   document.querySelector('.area').value = text.substring(0,text.length -1);
 }
 
-function enter() {
-  let text = document.querySelector('.area').value;
-  document.querySelector('.area').value = text + '\r\n';
-}
 
 function initRu() {
   let out = '';
@@ -195,13 +214,20 @@ function initRu() {
     document.querySelector(`.row${i}`).innerHTML = out;
     out = '';
   }
-
-  let arr = arrCode.flat(Infinity);
-  let code = document.querySelectorAll('.key');
-  for(i = 0; i < arr.length; i++) {
-    code[i].classList.add(`${arr[i]}`)
-  }
 }
+
+
+function enter() {
+  let text = document.querySelector('.area').value;
+  document.querySelector('.area').value = text + '\r\n';
+}
+
+let arr = arrCode.flat(Infinity);
+let code = document.querySelectorAll('.key');
+for(i = 0; i < arr.length; i++) {
+  code[i].classList.add(`${arr[i]}`)
+}
+
 
 
 document.querySelectorAll('.keyboard .key').forEach(el => {
@@ -216,7 +242,7 @@ document.querySelectorAll('.keyboard .key').forEach(el => {
         enter()
         break
       case 'Shift':
-        initRu();
+        initEnShift();
         break
       case 'DEL':
       case 'Ctrl':
@@ -235,18 +261,38 @@ document.querySelectorAll('.keyboard .key').forEach(el => {
   el.addEventListener('mouseup', () => {
     document.querySelectorAll('.keyboard .key').forEach(el => {
       el.classList.remove('active');
+      if(el.getAttribute('Shift') && initEnShift()) {
+        init()
+      }
     })
   })
 })
 
-// document.addEventListener('keydown', (e) =>{
-//   console.log(e.ctrlKey);
-// })
 
 
+function runOnKeys(func, ...codes) {
+  let pressed = new Set();
 
+  document.addEventListener('keydown', function(event) {
+    pressed.add(event.code);
 
+    for (let code of codes) {
+      if (!pressed.has(code)) {
+        return;
+      }
+    }
+    pressed.clear();
 
+    func();
+  });
 
+  document.addEventListener('keyup', function(event) {
+    pressed.delete(event.code);
+  });
+}
 
-
+runOnKeys(
+  initRu,
+  "ShiftLeft",
+  "AltLeft"
+);
