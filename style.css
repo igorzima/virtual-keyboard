@@ -47,12 +47,14 @@ main {
   margin-bottom: 5px;
 }
 
-.Space {
+.Space,
+.key[data=" "] {
   flex-basis: 35.1%;
 }
 
 .ShiftLeft,
 .ShiftRight,
-.Enter {
+.Enter,
+.key[data$="hift"] {
   flex-basis: 10%;
 }
