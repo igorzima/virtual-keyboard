@@ -1,107 +1,70 @@
 let keyboard = {
   keyEn: [
-    ['`', '1', "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", 'Backspace', ],
-    ['Tab', "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", 'DEL', ],
-    ['CapsLock', "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", `\\`, 'Enter'],
-    ["Shift", "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", '↑', "shift", ],
-    ["Ctrl", "Win", "Alt", " ", "Alt", "←", "↓", "→", "Ctrl"],
+    ['`', '1', "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", 'Backspace',],
+    ['Tab', "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", 'DEL',],
+    ['CapsLock', "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", `\\`, 'Enter',],
+    ["Shift", "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", '↑', "shift",],
+    ["Ctrl", "Win", "Alt", " ", "Alt", "←", "↓", "→", "Ctrl",],
   ],
   keyEnShift: [
-    ['~', '!', "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", 'Backspace', ],
-    ['Tab', "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "{", "}", 'DEL', ],
+    ['~', '!', "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", 'Backspace',],
+    ['Tab', "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "{", "}", 'DEL',],
     ['CapsLock', "A", "S", "D", "F", "G", "H", "J", "K", "L", ":", '"', `|`, 'Enter'],
-    ["Shift", "Z", "X", "C", "V", "B", "N", "M", "<", ">", "?", '↑', "shift", ],
+    ["Shift", "Z", "X", "C", "V", "B", "N", "M", "<", ">", "?", '↑', "shift",],
     ["Ctrl", "Win", "Alt", " ", "Alt", "←", "↓", "→", "Ctrl"],
   ],
   keyRu: [
-    ['ё', '1', "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", 'Backspace', ],
-    ['Tab', "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ", 'DEL', ],
-    ['CapsLock', "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э", `\\`, 'Enter'],
-    ["Shift", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", ".", '↑', "shift", ],
-    ["Ctrl", "Win", "Alt", " ", "Alt", "←", "↓", "→", "Ctrl"],
+    ['ё', '1', "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", 'Backspace',],
+    ['Tab', "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ", 'DEL',],
+    ['CapsLock', "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э", `\\`, 'Enter',],
+    ["Shift", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", ".", '↑', "shift",],
+    ["Ctrl", "Win", "Alt", " ", "Alt", "←", "↓", "→", "Ctrl",],
   ],
   keyRuShift: [
-    ['Ё', '!', '"', "№", ";", "%", ":", "?", "*", "(", ")", "_", "+", 'Backspace', ],
-    ['Tab', "Й", "Ц", "У", "К", "Е", "Н", "Г", "Ш", "Щ", "З", "Х", "Ъ", 'DEL', ],
-    ['CapsLock', "Ф", "Ы", "В", "А", "П", "Р", "О", "Л", "Д", "Ж", "Э", `/`, 'Enter'],
-    ["Shift", "Я", "Ч", "С", "М", "И", "Т", "Ь", "Б", "Ю", ",", '↑', "shift", ],
-    ["Ctrl", "Win", "Alt", " ", "Alt", "←", "↓", "→", "Ctrl"],
+    ['Ё', '!', '"', "№", ";", "%", ":", "?", "*", "(", ")", "_", "+", 'Backspace',],
+    ['Tab', "Й", "Ц", "У", "К", "Е", "Н", "Г", "Ш", "Щ", "З", "Х", "Ъ", 'DEL',],
+    ['CapsLock', "Ф", "Ы", "В", "А", "П", "Р", "О", "Л", "Д", "Ж", "Э", `/`, 'Enter',],
+    ["Shift", "Я", "Ч", "С", "М", "И", "Т", "Ь", "Б", "Ю", ",", '↑', "shift",],
+    ["Ctrl", "Win", "Alt", " ", "Alt", "←", "↓", "→", "Ctrl",],
   ],
   keyCode: [
-    ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace"],
-    ["Tab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight", "Delete"],
-    ["CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Backslash", "Enter"],
-    ["ShiftLeft", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Comma", "Period", "Slash", "ArrowUp", "ShiftRight" ],
-    ["ControlLeft", "MetaLeft", "AltLeft", "Space", "AltRight", "ArrowLeft", "ArrowDown", "ArrowRight", "ControlRight"],
+    ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace",],
+    ["Tab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight", "Delete",],
+    ["CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Backslash", "Enter",],
+    ["ShiftLeft", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Comma", "Period", "Slash", "ArrowUp", "ShiftRight",],
+    ["ControlLeft", "MetaLeft", "AltLeft", "Space", "AltRight", "ArrowLeft", "ArrowDown", "ArrowRight", "ControlRight",],
   ],
 };
 
 let {keyEn, keyEnShift, keyRu, keyRuShift, keyCode} = keyboard;
 let key = document.getElementsByClassName('key');
 
-class Keyboard {
-  constructor(textarea, keyboard, keyEn, keyRu, pushKey, pushMouse, caps) {
-    this.textarea = textarea;
-    this.keyboard = keyboard;
-    this.keyEn = keyEn;
-    this.keyRu = keyRu;
-    this.pushKey = pushKey;
-    this.pushMouse = pushMouse;
-    this.caps = caps;
-  }
-}
-
-
 function createTextarea() {
   let textarea = document.createElement('textarea');
   textarea.classList.add('area');
-  document.body.prepend(textarea)
+  document.body.prepend(textarea);
 }
 
 function createKeyboard() {
   let div = document.createElement('div');
   div.classList.add('keyboard');
-  div.id = 'keyboard'
+  div.id = 'keyboard';
   document.body.prepend(div);
 }
 
-function createEnKey() {
+function createKey(lang = keyEn) {
+  this.lang = lang;
   let out = '';
   let row = '';
-  for(let i = 0; i < keyEn.length; i++) {
+  for(let i = 0; i < this.lang.length; i++) {
     row += `<div id='row' class='row row${i}'></div>`;
     document.querySelector('#keyboard').innerHTML = row;
   }
     
-  for(let i = 0; i < keyEn.length; i++) {
-    keyEn[i].map((e) => {
+  for(let i = 0; i < this.lang.length; i++) {
+    this.lang[i].map((e) => {
       out += `<div class='key ${e}' data-key='${e}'>${e}</div>`;
-      return out
-    });
-    document.querySelector(`.row${i}`).innerHTML = out;
-    out = '';
-  }
-
-  let arr = keyCode.flat(Infinity);
-  let code = document.querySelectorAll('.key');
-  for(i = 0; i < arr.length; i++) {
-    code[i].classList.add(`${arr[i]}`);
-    code[i].id = arr[i]
-  }
-}
-
-function createEnShift() {
-  let out = '';
-  let row = '';
-  for(let i = 0; i < keyEnShift.length; i++) {
-    row += `<div id='row'  class='row row${i}'></div>`;
-    document.querySelector('#keyboard').innerHTML = row;
-  }
-    
-  for(let i = 0; i < keyEnShift.length; i++) {
-    keyEnShift[i].map((e) => {
-      out += `<div class='key ${e}' data-key='${e}'>${e}</div>`;
-      return out
+      return out;
     });
     document.querySelector(`.row${i}`).innerHTML = out;
     out = '';
@@ -113,55 +76,11 @@ function createEnShift() {
     code[i].classList.add(`${arr[i]}`);
     code[i].id = arr[i];
   }
-}
 
-function createRuKey() {
-  let out = '';
-  let row = '';
-  for(let i = 0; i < keyRu.length; i++) {
-    row += `<div id='row' class='row row${i}'></div>`;
-    document.querySelector('#keyboard').innerHTML = row;
-  }
-    
-  for(let i = 0; i < keyRu.length; i++) {
-    keyRu[i].map((e) => {
-      out += `<div class='key ${e}' data-key='${e}'>${e}</div>`;
-      return out
-    });
-    document.querySelector(`.row${i}`).innerHTML = out;
-    out = '';
-  }
-
-  let arr = keyCode.flat(Infinity);
-  let code = document.querySelectorAll('.key');
-  for(i = 0; i < arr.length; i++) {
-    code[i].classList.add(`${arr[i]}`);
-    code[i].id = arr[i];
-  }
-}
-
-function createRuShift() {
-  let out = '';
-  let row = '';
-  for(let i = 0; i < keyRuShift.length; i++) {
-    row += `<div id='row' class='row row${i}'></div>`;
-    document.querySelector('#keyboard').innerHTML = row;
-  }
-    
-  for(let i = 0; i < keyRuShift.length; i++) {
-    keyRuShift[i].map((e) => {
-      out += `<div class='key ${e}' data-key='${e}'>${e}</div>`;
-      return out
-    });
-    document.querySelector(`.row${i}`).innerHTML = out;
-    out = '';
-  }
-
-  let arr = keyCode.flat(Infinity);
-  let code = document.querySelectorAll('.key');
-  for(i = 0; i < arr.length; i++) {
-    code[i].classList.add(`${arr[i]}`);
-    code[i].id = arr[i];
+  if(lang == keyEn) {
+    localStorage.setItem('lang', 'en');
+  } else if (lang == keyRu) {
+    localStorage.setItem('lang', 'ru');
   }
 }
 
@@ -169,7 +88,6 @@ function backspace () {
   let text = document.querySelector('.area').value;
   document.querySelector('.area').value = text.substring(0,text.length -1);
 }
-
 
 function enter() {
   let text = document.querySelector('.area').value;
@@ -179,16 +97,16 @@ function enter() {
 function caps() {
   if(event.getModifierState('CapsLock') || event.getModifierState('Shift')) {
     if(document.getElementById('keyboard').classList.contains('keyboard')) {
-      createEnShift();
+      createKey(keyEnShift);
     } else if(document.getElementById('keyboard').classList.contains('keyboard_ru')) {
-      createRuShift();
+      createKey(keyRuShift);
     }
     pushMouse();
   } else {
     if(document.getElementById('keyboard').classList.contains('keyboard')) {
-      page.keyEn();
+      createKey(keyEn);
     } else {
-      page.keyRu();
+      createKey(keyRu);
     }
     pushMouse();
   }
@@ -214,19 +132,19 @@ function pushKey() {
         break
       case 'ShiftLeft':
         if(document.getElementById('keyboard').classList.contains('keyboard')) {
-          createEnShift();
+          createKey(keyEnShift);
           pushMouse();
         } else {
-          createRuShift();
+          createKey(keyRuShift);
           pushMouse();
         }
         document.querySelector('.ShiftLeft').classList.add('active');
         break;
       case 'ShiftRight':
         if(document.getElementById('keyboard').classList.contains('keyboard')) {
-          createEnShift();
+          createKey(keyEnShift);
         } else {
-          createRuShift();
+          createKey(keyRuShift);
         }
         document.querySelector('.ShiftRight').classList.add('active');
         break;
@@ -262,7 +180,7 @@ function pushKey() {
       case 'ControlRight':
       case 'MetaLeft':
         document.querySelector(`.${event.code}`).classList.add('active');
-        textarea.value += ''
+        textarea.value += '';
         break
       default:
         document.querySelector(`.${event.code}`).classList.add('active');
@@ -274,15 +192,15 @@ function pushKey() {
     if(document.getElementById('keyboard').classList.contains('keyboard')) {
       document.querySelectorAll('.keyboard .key').forEach(el => {
         el.classList.remove('active');
-        if((event.code === 'ShiftLeft' || event.code === 'ShiftRight')  && !createEnShift()) {
-          createEnKey();
+        if((event.code === 'ShiftLeft' || event.code === 'ShiftRight')  && !createKey(keyEnShift)) {
+          createKey(keyEn);
         }
       })
     } else if(document.getElementById('keyboard').classList.contains('keyboard_ru')) {
       document.querySelectorAll('.keyboard_ru .key').forEach(el => {
         el.classList.remove('active');
-        if((event.code === 'ShiftLeft' || event.code === 'ShiftRight')  && !createRuShift()) {
-          createRuKey();
+        if((event.code === 'ShiftLeft' || event.code === 'ShiftRight')  && !createKey(keyRuShift)) {
+          createKey(keyRu);
         }
       })
     }
@@ -323,15 +241,15 @@ function pushMouse() {
       case 'CapsLock':
         if(document.getElementById('keyboard').classList.contains('keyboard_ru')) {
           if(document.getElementById('KeyQ').dataset.key === 'й') {
-            createRuShift();
+            createKey(keyRuShift);
           } else if(document.getElementById('KeyQ').dataset.key === 'Й') {
-            createRuKey();
+            createKey(keyRu);
           }
         } else if (document.getElementById('keyboard').classList.contains('keyboard')) {
           if(document.getElementById('KeyQ').dataset.key === 'q') {
-            createEnShift();
+            createKey(keyEnShift);
           } else if(document.getElementById('KeyQ').dataset.key === 'Q') {
-            createEnKey();
+            createKey(keyEn);
           }
         }
         pushMouse();
@@ -345,15 +263,9 @@ function pushMouse() {
       document.querySelectorAll('#keyboard .key').forEach(el => {
         el.classList.remove('active');
       })
-
-      switch(el.getAttribute( 'data')) {
-        case 'CapsLock':
-          break
-      }
     })
   })
 }
-
 
 function runOnKeys(func, func2, ...codes) {
   let pressed = new Set();
@@ -372,13 +284,13 @@ function runOnKeys(func, func2, ...codes) {
     if(document.getElementById('keyboard').classList.contains('keyboard')) {
       func();
       func2();
-      document.getElementById('keyboard').classList.add('keyboard_ru')
-      document.getElementById('keyboard').classList.remove('keyboard')
+      document.getElementById('keyboard').classList.add('keyboard_ru');
+      document.getElementById('keyboard').classList.remove('keyboard');
     } else if(document.getElementById('keyboard').classList.contains('keyboard_ru')) {
       func();
       func2();
-      document.getElementById('keyboard').classList.add('keyboard')
-      document.getElementById('keyboard').classList.remove('keyboard_ru')
+      document.getElementById('keyboard').classList.add('keyboard');
+      document.getElementById('keyboard').classList.remove('keyboard_ru');
     }
   });
 
@@ -387,30 +299,31 @@ function runOnKeys(func, func2, ...codes) {
   });
 }
 
+createKeyboard();
+createTextarea();
 
-const page = new Keyboard(createTextarea, createKeyboard, createEnKey, createRuKey, pushKey, pushMouse);
+if(localStorage.lang == undefined || localStorage.lang == 'en') {
+  createKey();
+  localStorage.setItem('lang', 'en');
+} else if(localStorage.lang == 'ru') {
+  createKey(keyRu);
+  localStorage.setItem('lang', 'ru');
+}
 
-
-page.keyboard();
-page.textarea();
-page.keyEn();
-page.pushKey();
-page.pushMouse();
-
-
-
+pushKey();
+pushMouse();
 
 if(document.getElementById('keyboard').classList.contains('keyboard')) {
   runOnKeys(
-    page.keyRu,
-    page.pushMouse,
+    createKey.bind(this, keyRu),
+    pushMouse,
     "ShiftLeft",
     "AltLeft"
   );
 } else if(document.getElementById('keyboard').classList.contains('keyboard_ru')) {
   runOnKeys(
-    page.keyEn,
-    page.pushMouse,
+    createKey.bind(this, keyEn),
+    pushMouse,
     "ShiftLeft",
     "AltLeft"
   );
