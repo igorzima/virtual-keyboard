@@ -40,9 +40,12 @@ let {keyEn, keyEnShift, keyRu, keyRuShift, keyCode} = keyboard;
 let key = document.getElementsByClassName('key');
 
 function createTextarea() {
+  let title = document.createElement('p');
+  title.classList.add('title');
+  title.innerText = 'Для переключения раскладки клавиатуры используйте leftShift и leftAlt';
   let textarea = document.createElement('textarea');
   textarea.classList.add('area');
-  document.body.prepend(textarea);
+  document.body.prepend(title, textarea);
 }
 
 function createKeyboard() {
@@ -119,15 +122,14 @@ function pushKey() {
     })
     
     let textarea = document.querySelector('.area');
+    document.querySelector(`.${event.code}`).classList.add('active');
   
     switch(event.code) {
       case 'Backspace':
-        document.querySelector('.Backspace').classList.add('active');
         backspace();
         break
       case 'Tab':
         event.preventDefault();
-        document.querySelector('.Tab').classList.add('active');
         textarea.value += '    ';
         break
       case 'ShiftLeft':
@@ -150,40 +152,28 @@ function pushKey() {
         break;
       case 'AltLeft':
         event.preventDefault();
-        document.querySelector('.AltLeft').classList.add('active');
         break 
       case 'AltRight':
         event.preventDefault();
-        document.querySelector('.AltRight').classList.add('active');
-        break
-      case 'ArrowUp':
-        document.querySelector('.ArrowUp').classList.add('active');
-        break
-      case 'ArrowLeft':
-        document.querySelector('.ArrowLeft').classList.add('active');
-        break
-      case 'ArrowDown':
-        document.querySelector('.ArrowDown').classList.add('active');
-        break
-      case 'ArrowRight':
-        document.querySelector('.ArrowRight').classList.add('active');
         break
       case 'Enter':
-        document.querySelector(`.Enter`).classList.add('active');
         enter()
         break
-      case 'Delete':
       case 'CapsLock':
         caps();
+        document.querySelector('.CapsLock').classList.add('active');
         break
+      case 'ArrowUp':
+      case 'ArrowLeft':
+      case 'ArrowDown':
+      case 'ArrowRight':
+      case 'Delete':
       case 'ControlLeft':
       case 'ControlRight':
       case 'MetaLeft':
-        document.querySelector(`.${event.code}`).classList.add('active');
         textarea.value += '';
         break
       default:
-        document.querySelector(`.${event.code}`).classList.add('active');
         textarea.value += event.key;
     }
   })
