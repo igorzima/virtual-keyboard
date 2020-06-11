@@ -8,6 +8,7 @@ body {
   box-sizing: border-box;
   user-select: none;
   font-size: 1.5rem;
+  background: #e6e6e6;
 }
 
 main {
