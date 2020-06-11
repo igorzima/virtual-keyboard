@@ -17,7 +17,7 @@ main {
 }
 
 .title {
-  width: 780px;
+  max-width: 780px;
   margin: 0 auto;
   font-size: 2rem;
   text-align: center;
@@ -25,14 +25,13 @@ main {
   margin-bottom: 20px;
 }
 
-.keyboard,
-.keyboard_ru {
+.keyboard {
   margin: 0 auto;
   width: 780px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   color: #FF4B00;
 }
 
@@ -68,8 +67,7 @@ main {
   transition: all ease;
 }
 
-.row,
-.row_ru {
+.row {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -77,20 +75,24 @@ main {
 }
 
 .Backspace,
-.CapsLock {
+.CapsLock,
+.Delete {
   border-radius: 0;
 }
 
-.Space,
-.key[data=" "] {
-  flex-basis: 35.1%;
+.Space {
+  flex-basis: 37.5%;
   border-radius: 0;
 }
 
 .ShiftLeft,
 .ShiftRight,
 .Enter,
-.key[data$="hift"] {
+.key[data$="shift"] {
   border-radius: 0;
   flex-basis: 10%;
+}
+
+.Tab {
+  flex-basis: 5%;
 }
