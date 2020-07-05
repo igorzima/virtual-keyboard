@@ -1,6 +1,9 @@
 import Key from './key';
 import ru from './ru';
-// import en from './en';
+import en from './en';
+
+const keyRu = new Key(ru);
+const keyEn = new Key(en);
 
 function createTextarea() {
   const title = document.createElement('p');
@@ -18,8 +21,8 @@ function createKeyboard() {
   document.body.append(div);
 }
 
-const keyRu = new Key(ru);
-
 createTextarea();
 createKeyboard();
+keyEn.init(false);
 keyRu.init(false);
+keyRu.handlerKey();
