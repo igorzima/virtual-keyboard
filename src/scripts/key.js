@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 /* eslint-disable no-console */
 export default class Key {
   constructor(lang) {
@@ -100,8 +99,10 @@ export default class Key {
       event.target.classList.add('active');
 
       if (fn === 'false') {
-        this.textarea.textContent += event.target.textContent;
+        this.textarea.value += event.target.textContent;
       }
+
+      this.fnKey(event);
     }
   }
 
@@ -128,17 +129,21 @@ export default class Key {
 
       if (el.classList.contains(`${event.code}`)) {
         el.classList.add('active');
-        console.log(event.code);
+        console.log(event);
 
         if (fn === 'false') {
-          this.textarea.textContent += el.textContent;
-        } else if (event.getModifierState('CapsLock') && event.shiftKey) {
+          this.textarea.value += el.textContent;
+        }
+
+        if ((el.classList.contains('ShiftLeft') && event.getModifierState('CapsLock')) && event.shiftKey) {
           this.init(false);
-        } else if (event.getModifierState('CapsLock') || event.getModifierState('Shift')) {
+        } else if ((el.classList.contains('CapsLock') && event.getModifierState('CapsLock')) || (el.classList.contains('ShiftLeft') && event.getModifierState('Shift'))) {
           this.init(true);
-        } else {
+        } else if (el.classList.contains('CapsLock')) {
           this.init(false);
         }
+
+        this.fnKey(event);
       }
     });
   }
@@ -154,6 +159,18 @@ export default class Key {
       this.init(false);
     } else if ((event.code === 'ShiftLeft' || event.code === 'ShiftRight') && event.getModifierState('CapsLock')) {
       this.init(true);
+    }
+  }
+
+  fnKey(event) {
+    this.text = document.querySelector('.area');
+
+    if (event.code === 'Backspace' || event.target.classList.contains('Backspace')) {
+      this.text.value = this.text.value.substring(0, this.text.value.length - 1);
+    } else if (event.code === 'Enter' || event.target.classList.contains('Enter')) {
+      this.text.value = `${this.text.value}\r\n`;
+    } else if (event.code === 'Tab' || event.target.classList.contains('Tab')) {
+      this.text.value += '\t';
     }
   }
 }

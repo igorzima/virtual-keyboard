@@ -8,7 +8,7 @@ const keyEn = new Key(en);
 function createTextarea() {
   const title = document.createElement('p');
   title.classList.add('title');
-  title.innerText = 'Для переключения раскладки клавиатуры используйте leftShift и leftAlt';
+  title.innerText = 'To switch the language use Ctrl and Alt';
   const textarea = document.createElement('textarea');
   textarea.classList.add('area');
   document.body.append(title, textarea);
@@ -33,3 +33,26 @@ if (localStorage.lang === undefined || localStorage.lang === 'en') {
   keyRu.handlerKey();
   localStorage.setItem('lang', 'ru');
 }
+
+const keys = [];
+
+function keysPressed(e) {
+  keys[e.keyCode] = true;
+
+  if (keys[17] && keys[18] && localStorage.lang === 'en') {
+    e.preventDefault();
+    localStorage.setItem('lang', 'ru');
+    keyRu.init(false);
+  } else if (keys[17] && keys[18] && localStorage.lang === 'ru') {
+    e.preventDefault();
+    localStorage.setItem('lang', 'en');
+    keyEn.init(false);
+  }
+}
+
+function keysReleased(e) {
+  keys[e.keyCode] = false;
+}
+
+document.addEventListener('keydown', keysPressed, false);
+document.addEventListener('keyup', keysReleased, false);
