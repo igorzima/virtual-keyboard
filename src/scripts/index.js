@@ -23,6 +23,13 @@ function createKeyboard() {
 
 createTextarea();
 createKeyboard();
-keyEn.init(false);
-keyRu.init(false);
-keyRu.handlerKey();
+
+if (localStorage.lang === undefined || localStorage.lang === 'en') {
+  keyEn.init(false);
+  keyEn.handlerKey();
+  localStorage.setItem('lang', 'en');
+} else if (localStorage.lang === 'ru') {
+  keyRu.init(false);
+  keyRu.handlerKey();
+  localStorage.setItem('lang', 'ru');
+}

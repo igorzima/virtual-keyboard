@@ -3,7 +3,7 @@ const ru = [
     small: 'ё',
     shift: 'Ё',
     keyCode: 'Backquote',
-    fn: true,
+    fn: false,
   },
   {
     small: '1',

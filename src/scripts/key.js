@@ -25,7 +25,12 @@ export default class Key {
 
     if (shiftKey) {
       this.lang.map((e, i) => {
-        out += `<div class='key ${e.keyCode}' data-key='${e.keyCode}' data-fn='${e.fn}'>${e.shift || e.small}</div>`;
+        if (e.keyCode === 'CapsLock') {
+          out += `<div class='key ${e.keyCode} caps' data-key='${e.keyCode}' data-fn='${e.fn}'>${e.shift || e.small}</div>`;
+        } else {
+          out += `<div class='key ${e.keyCode}' data-key='${e.keyCode}' data-fn='${e.fn}'>${e.shift || e.small}</div>`;
+        }
+
         if (i === 13) {
           document.querySelector('.row0').innerHTML = out;
           out = '';
@@ -81,13 +86,13 @@ export default class Key {
   handlerKey() {
     this.keyboard = document.querySelector('#keyboard');
 
-    this.keyboard.addEventListener('mousedown', this.clickOnKey);
-    this.keyboard.addEventListener('mouseup', this.removeClickOnKey);
-    document.addEventListener('keydown', this.pushKey);
-    document.addEventListener('keyup', this.removePushKey);
+    this.keyboard.addEventListener('mousedown', (event) => this.mouseDown(event));
+    this.keyboard.addEventListener('mouseup', (event) => this.mouseUp(event));
+    document.addEventListener('keydown', (event) => this.keyDown(event));
+    document.addEventListener('keyup', (event) => this.keyUp(event));
   }
 
-  clickOnKey(event) {
+  mouseDown(event) {
     this.textarea = document.querySelector('.area');
     const fn = event.target.getAttribute('data-fn');
 
@@ -100,34 +105,55 @@ export default class Key {
     }
   }
 
-  removeClickOnKey(event) {
+  mouseUp(event) {
     if (event.target.classList.contains('key')) {
       event.target.classList.remove('active');
     }
+
+    if (event.target.dataset.key === 'CapsLock') {
+      if (event.target.classList.contains('caps')) {
+        this.init(false);
+      } else {
+        this.init(true);
+      }
+    }
   }
 
-  pushKey(event) {
+  keyDown(event) {
     this.textarea = document.querySelector('.area');
-    const fn = event.target.getAttribute('data-fn');
+    event.preventDefault();
 
     document.querySelectorAll('.key').forEach((el) => {
+      const fn = el.getAttribute('data-fn');
+
       if (el.classList.contains(`${event.code}`)) {
         el.classList.add('active');
+        console.log(event.code);
 
         if (fn === 'false') {
           this.textarea.textContent += el.textContent;
+        } else if (event.getModifierState('CapsLock') && event.shiftKey) {
+          this.init(false);
+        } else if (event.getModifierState('CapsLock') || event.getModifierState('Shift')) {
+          this.init(true);
+        } else {
+          this.init(false);
         }
       }
-      return el;
     });
   }
 
-  removePushKey(event) {
+  keyUp(event) {
     document.querySelectorAll('.key').forEach((el) => {
       if (el.classList.contains(`${event.code}`)) {
         el.classList.remove('active');
       }
-      return el;
     });
+
+    if ((event.code === 'ShiftLeft' || event.code === 'ShiftRight') && !event.getModifierState('CapsLock')) {
+      this.init(false);
+    } else if ((event.code === 'ShiftLeft' || event.code === 'ShiftRight') && event.getModifierState('CapsLock')) {
+      this.init(true);
+    }
   }
 }

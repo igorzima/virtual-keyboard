@@ -345,7 +345,7 @@ const en = [
     small: 'Win',
     shift: null,
     keyCode: 'Win',
-    fn: false,
+    fn: true,
   },
   {
     small: 'Alt',
