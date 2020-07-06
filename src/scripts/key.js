@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 export default class Key {
   constructor(lang) {
     const {
@@ -129,7 +128,6 @@ export default class Key {
 
       if (el.classList.contains(`${event.code}`)) {
         el.classList.add('active');
-        console.log(event);
 
         if (fn === 'false') {
           this.textarea.value += el.textContent;

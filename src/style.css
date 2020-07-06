@@ -65,6 +65,8 @@ main {
   box-shadow: none;
   transform: translate(5px, -2px);
   transition: all ease;
+  background: rgba(150, 50, 50, 0.63);
+  color: #ffffff;
 }
 
 .row {
