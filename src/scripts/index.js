@@ -8,16 +8,19 @@ const page = new Layout();
 const keyRu = new Key(ru);
 const keyEn = new Key(en);
 
+const keyboardLanguageEn = 'en';
+const keyboardLanguageRu = 'ru';
+
 page.createLayout();
 
-if (localStorage.lang === undefined || localStorage.lang === 'en') {
+if (localStorage.lang === undefined || localStorage.lang === keyboardLanguageEn) {
   keyEn.init(false);
   keyEn.handlerKey();
-  localStorage.setItem('lang', 'en');
-} else if (localStorage.lang === 'ru') {
+  localStorage.setItem('lang', keyboardLanguageEn);
+} else if (localStorage.lang === keyboardLanguageRu) {
   keyRu.init(false);
   keyRu.handlerKey();
-  localStorage.setItem('lang', 'ru');
+  localStorage.setItem('lang', keyboardLanguageRu);
 }
 
 const keys = [];
@@ -25,13 +28,13 @@ const keys = [];
 function keysPressed(e) {
   keys[e.keyCode] = true;
 
-  if (keys[17] && keys[18] && localStorage.lang === 'en') {
+  if (keys[17] && keys[18] && localStorage.lang === keyboardLanguageEn) {
     e.preventDefault();
-    localStorage.setItem('lang', 'ru');
+    localStorage.setItem('lang', keyboardLanguageRu);
     keyRu.init(false);
-  } else if (keys[17] && keys[18] && localStorage.lang === 'ru') {
+  } else if (keys[17] && keys[18] && localStorage.lang === keyboardLanguageRu) {
     e.preventDefault();
-    localStorage.setItem('lang', 'en');
+    localStorage.setItem('lang', keyboardLanguageEn);
     keyEn.init(false);
   }
 }
